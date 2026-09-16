@@ -1,5 +1,3 @@
-package Prova;
-
 public class Bancario {
     public static final int DEBITO = 0;
     public static final int CREDITO = 1;
