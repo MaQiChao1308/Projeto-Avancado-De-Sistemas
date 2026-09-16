@@ -3,18 +3,19 @@ public abstract class Titulo{
     public static final int ABERTO = 0;
     public static final int CANCELADO = 1;
     public static final int QUITADO = 2;
+
     protected int estado;
     protected String descricao;
     protected double valor;
     protected int dataVencimento;
     protected Bancario bancario;
 
-    public Titulo(int estado, String descricao, double valor, int dataVencimento, Bancario bancario) {
-        this.estado = estado;
+    public Titulo(String descricao, double valor, int dataVencimento) {
+
+        this.estado = 0;
         this.descricao = descricao;
         this.valor = valor;
         this.dataVencimento = dataVencimento;
-        this.bancario = bancario;
     }
 
     public abstract boolean Pagamento(int dataAtual, String newConta);
@@ -44,22 +45,13 @@ public abstract class Titulo{
         }
     }
 
-    public String getEstado
+    public String getEstado()
+    {
+        if(this.estado == ABERTO) return "Aberto";
+        if(this.estado == CANCELADO) return "Cancelado";
+        if(this.estado == QUITADO) return "Quitado";
 
-    public static int getAberto() {
-        return ABERTO;
-    }
-
-    public static int getCancelado() {
-        return CANCELADO;
-    }
-
-    public static int getQuitado() {
-        return QUITADO;
-    }
-
-    public int getEstado() {
-        return estado;
+        return "SEM ESTADO";
     }
 
     public void setEstado(int estado) {
@@ -96,6 +88,29 @@ public abstract class Titulo{
 
     public void setBancario(Bancario bancario) {
         this.bancario = bancario;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+    {
+        Titulo t = (Titulo) o;
+
+        if(this.getDescricao().equals(t.getDescricao()))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+       
+    }
+
+    @Override
+    public String toString() {
+        return "Titulo [estado=" + estado + ", descricao=" + descricao + ", valor=" + valor + ", dataVencimento="
+                + dataVencimento + ", bancario=" + bancario + "]";
     }
 
 }
