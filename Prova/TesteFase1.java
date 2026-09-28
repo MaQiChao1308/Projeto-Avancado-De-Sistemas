@@ -1,3 +1,4 @@
+package Prova;
 public class TesteFase1 {
     private static class TituloTeste extends Titulo {
         public TituloTeste(String descricao, double valor, int vencimento) {

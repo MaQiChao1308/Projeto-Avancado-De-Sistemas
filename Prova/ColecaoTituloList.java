@@ -1,33 +1,32 @@
-import java.util.HashMap;
+package Prova;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Collection;
+import java.util.Iterator;
 
-public class ColecaoTituloMap {
-    
-    private HashMap<String, Titulo> titulos;
+public class ColecaoTituloList {
+    private ArrayList<Titulo> titulos;
 
-    public ColecaoTituloMap() {
-        this.titulos = new HashMap<String, Titulo>();
+    public ColecaoTituloList() {
+        this.titulos = new ArrayList<Titulo>();
     }
-
-    public boolean adicionaTitulo(Titulo titulo) {
+    
+    public boolean adicionaTitulo(Titulo titulo) {   
         if (titulo == null || titulo.getDescricao() == null) {
             return false;
         }
 
-        if (!this.titulos.containsKey(titulo.getDescricao())) {
-            this.titulos.put(titulo.getDescricao(), titulo);
-            return true;
-        } else {
+        if (this.titulos.contains(titulo)) {
             return false;
         }
+
+        this.titulos.add(titulo);
+        return true;
     }
 
     public double balanco() {
         double tituloR = 0;
         double tituloP = 0;
-        Iterator<Titulo> it = this.titulos.values().iterator();
+        Iterator<Titulo> it = this.titulos.iterator();
 
         while (it.hasNext()) {
             Titulo t = it.next();
@@ -39,10 +38,10 @@ public class ColecaoTituloMap {
             }
         }
 
-        return tituloR - tituloP;   
+        return tituloR - tituloP;
     }
 
     public Collection<Titulo> getTitulos() {
-        return new ArrayList<Titulo>(this.titulos.values());
+        return new ArrayList<Titulo>(this.titulos);
     }
 }
